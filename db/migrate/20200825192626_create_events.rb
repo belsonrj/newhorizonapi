@@ -4,7 +4,7 @@ class CreateEvents < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :date
       t.string :img_url
-      t.belongs_to :user, index: true, foreign_key: true
+      t.string :comment
 
       t.timestamps
     end

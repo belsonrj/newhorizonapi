@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_25_203441) do
+ActiveRecord::Schema.define(version: 2020_08_25_193315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,37 +18,18 @@ ActiveRecord::Schema.define(version: 2020_08_25_203441) do
   create_table "artists", force: :cascade do |t|
     t.string "name"
     t.string "genre"
+    t.string "comment"
     t.bigint "event_id"
-    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["event_id"], name: "index_artists_on_event_id"
-    t.index ["user_id"], name: "index_artists_on_user_id"
-  end
-
-  create_table "comments", force: :cascade do |t|
-    t.string "content"
-    t.bigint "user_id"
-    t.bigint "event_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["event_id"], name: "index_comments_on_event_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.string "date"
     t.string "img_url"
-    t.bigint "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_events_on_user_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "password_digest"
+    t.string "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -57,19 +38,13 @@ ActiveRecord::Schema.define(version: 2020_08_25_203441) do
     t.string "name"
     t.string "locale"
     t.string "venue_type"
+    t.string "comment"
     t.bigint "event_id"
-    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["event_id"], name: "index_venues_on_event_id"
-    t.index ["user_id"], name: "index_venues_on_user_id"
   end
 
   add_foreign_key "artists", "events"
-  add_foreign_key "artists", "users"
-  add_foreign_key "comments", "events"
-  add_foreign_key "comments", "users"
-  add_foreign_key "events", "users"
   add_foreign_key "venues", "events"
-  add_foreign_key "venues", "users"
 end

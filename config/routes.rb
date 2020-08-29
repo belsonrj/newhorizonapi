@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  resources :comments
-  resources :events
-  resources :users
-  resources :venues
-  resources :artists
+  resources :events do
+    resources :artists
+    resources :venues
+    resources :comments
+  end
   
   get '/', to: 'application#index'
   post '/login', to: 'sessions#login'
