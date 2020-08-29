@@ -18,11 +18,11 @@ ActiveRecord::Schema.define(version: 2020_08_25_203441) do
   create_table "artists", force: :cascade do |t|
     t.string "name"
     t.string "genre"
-    t.integer "times_seen"
-    t.boolean "met"
+    t.bigint "event_id"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_artists_on_event_id"
     t.index ["user_id"], name: "index_artists_on_user_id"
   end
 
@@ -37,13 +37,13 @@ ActiveRecord::Schema.define(version: 2020_08_25_203441) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.datetime "date"
-    t.bigint "artist_id"
-    t.bigint "venue_id"
+    t.string "name"
+    t.string "date"
+    t.string "img_url"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["artist_id"], name: "index_events_on_artist_id"
-    t.index ["venue_id"], name: "index_events_on_venue_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -57,19 +57,19 @@ ActiveRecord::Schema.define(version: 2020_08_25_203441) do
     t.string "name"
     t.string "locale"
     t.string "venue_type"
-    t.integer "layout"
-    t.integer "sound"
-    t.integer "prices"
+    t.bigint "event_id"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_venues_on_event_id"
     t.index ["user_id"], name: "index_venues_on_user_id"
   end
 
+  add_foreign_key "artists", "events"
   add_foreign_key "artists", "users"
   add_foreign_key "comments", "events"
   add_foreign_key "comments", "users"
-  add_foreign_key "events", "artists"
-  add_foreign_key "events", "venues"
+  add_foreign_key "events", "users"
+  add_foreign_key "venues", "events"
   add_foreign_key "venues", "users"
 end

@@ -4,9 +4,7 @@ class CreateVenues < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :locale
       t.string :venue_type
-      t.integer :layout
-      t.integer :sound
-      t.integer :prices
+      t.belongs_to :event, foreign_key: true
       t.belongs_to :user, foreign_key: true
 
       t.timestamps

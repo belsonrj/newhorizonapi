@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :venues
   resources :artists
   
-  get '/test', to: 'application#test'
+  get '/', to: 'application#index'
+  post '/login', to: 'sessions#login'
 end

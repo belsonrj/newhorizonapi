@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  def test
+  def index
     render json: { test: "success" }
   end
 end
