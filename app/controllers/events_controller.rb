@@ -35,5 +35,4 @@ class EventsController < ApplicationController
     def event_params
       params.permit(:name, :date, :img_url, :comment)
     end
-  end
 end
