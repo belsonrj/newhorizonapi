@@ -19,13 +19,13 @@ ActiveRecord::Schema.define(version: 2020_08_25_193315) do
     t.string "name"
     t.string "genre"
     t.string "comment"
-    t.bigint "event_id"
+    t.bigint "show_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["event_id"], name: "index_artists_on_event_id"
+    t.index ["show_id"], name: "index_artists_on_show_id"
   end
 
-  create_table "events", force: :cascade do |t|
+  create_table "shows", force: :cascade do |t|
     t.string "name"
     t.string "date"
     t.string "img_url"
@@ -39,12 +39,12 @@ ActiveRecord::Schema.define(version: 2020_08_25_193315) do
     t.string "locale"
     t.string "venue_type"
     t.string "comment"
-    t.bigint "event_id"
+    t.bigint "show_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["event_id"], name: "index_venues_on_event_id"
+    t.index ["show_id"], name: "index_venues_on_show_id"
   end
 
-  add_foreign_key "artists", "events"
-  add_foreign_key "venues", "events"
+  add_foreign_key "artists", "shows"
+  add_foreign_key "venues", "shows"
 end

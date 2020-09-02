@@ -33,6 +33,6 @@ class ArtistsController < ApplicationController
     end
   
     def artist_params
-      params.permit(:name, :genre, :comment)
+      params.permit(:name, :genre, :comment, :show_id)
     end
 end

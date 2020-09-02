@@ -1,3 +1,3 @@
 class VenueSerializer < ActiveModel::Serializer
-  attributes :id, :name, :locale, :venue_type, :comment
+  attributes :id, :name, :locale, :venue_type, :comment, :show_id
 end

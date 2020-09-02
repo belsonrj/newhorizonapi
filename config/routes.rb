@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :events, :venues, :artists
+  resources :shows, :venues, :artists
   
-  get '/', to: 'application#index'
+  #get '/', to: 'application#index'
+  #get '/shows', to: 'shows#show'
 end

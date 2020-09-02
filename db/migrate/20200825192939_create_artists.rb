@@ -4,7 +4,7 @@ class CreateArtists < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :genre
       t.string :comment
-      t.belongs_to :event, foreign_key: true
+      t.belongs_to :show, foreign_key: true
 
       t.timestamps
     end

@@ -1,4 +1,4 @@
 class Artist < ApplicationRecord
-    validates :name, uniqueness: true, presence: true 
-    belongs_to :event, optional: true
+    validates :name, presence: true 
+    belongs_to :show
 end

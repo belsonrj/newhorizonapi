@@ -6,7 +6,7 @@ class VenuesController < ApplicationController
     end
   
     def create
-      render json: Venue.create(ticket_params)
+      render json: Venue.create(venue_params)
     end
   
     def show
@@ -33,6 +33,6 @@ class VenuesController < ApplicationController
     end
   
     def venue_params
-      params.permit(:name, :locale, :venue_type, :comment)
+      params.permit(:name, :locale, :venue_type, :comment, :show_id)
     end
 end
