@@ -33,6 +33,6 @@ class VenuesController < ApplicationController
     end
   
     def venue_params
-      params.permit(:name, :locale, :venue_type, :comment, :show_id)
+      params.require(:venue).permit(:name, :locale, :venue_type, :comment, :show_id)
     end
 end

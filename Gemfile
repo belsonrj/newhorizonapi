@@ -10,7 +10,9 @@ gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-# gem 'jbuilder', '~> 2.7'
+ gem 'jbuilder', '~> 2.7'
+
+ gem 'fast_jsonapi'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -31,7 +33,14 @@ gem 'redis', '~> 4.1'
 
 gem 'jwt_sessions', '~> 2.3'
 
-gem 'active_model_serializers', '0.9.3'
+gem 'active_model_serializers', '~> 0.10.0'
+
+#gem 'jsonapi-rails'
+
+#gem 'rabl'
+
+#gem 'jsonapi-resources'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

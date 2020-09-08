@@ -1,16 +1,21 @@
 class ShowsController < ApplicationController
-    before_action :find_show, only: [:show, :update, :destroy]
+    before_action :find_show, only: [:update, :destroy]
 
     def index
       render json: Show.all
     end
   
     def show
-      render json: @show
+      show = Show.find_by(id: params[:id])
+      render json: { id: show.id, name: show.name, date: show.date, comment: show.comment, img_url: show.img_url, artists: show.artists, venues: show.venues }
+      #render json: @show
     end
   
     def create
-      render json: Show.create(show_params)
+      show = Show.create(show_params)
+      if show.save
+        render json: { id: show.id, name: show.name, date: show.date, comment: show.comment, img_url: show.img_url, artists: show.artists, venues: show.venues }
+      end
     end
   
     def update
@@ -33,6 +38,6 @@ class ShowsController < ApplicationController
     end
   
     def show_params
-      params.permit(:name, :date, :comment, :img_url)
+      params.require(:show).permit(:name, :date, :comment, :img_url)
     end
 end
