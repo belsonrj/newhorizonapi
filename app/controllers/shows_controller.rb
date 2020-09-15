@@ -1,14 +1,12 @@
 class ShowsController < ApplicationController
-    before_action :find_show, only: [:update, :destroy]
+    before_action :find_show, only: [:show, :update, :destroy]
 
     def index
       render json: Show.all
     end
   
     def show
-      show = Show.find_by(id: params[:id])
-      render json: { id: show.id, name: show.name, date: show.date, comment: show.comment, img_url: show.img_url, artists: show.artists, venues: show.venues }
-      #render json: @show
+      render json: { id: @show.id, name: @show.name, date: @show.date, comment: @show.comment, img_url: @show.img_url, artists: @show.artists, venues: @show.venues }
     end
   
     def create
@@ -21,7 +19,7 @@ class ShowsController < ApplicationController
     def update
       @show.update(show_params)
       if @show.save
-        render json: @show, status: :accepted
+        render json: { id: @show.id, name: @show.name, date: @show.date, comment: @show.comment, img_url: @show.img_url, artists: @show.artists, venues: @show.venues }, status: :accepted
       else
         render json: { errors: @show.errors.full_messages }, status: :unprocessible_entity
       end

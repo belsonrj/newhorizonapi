@@ -7,9 +7,6 @@ class ArtistsController < ApplicationController
   
     def create
       render json: Artist.create(artist_params)
-      #show = Show.joins(:artists)
-      #show_id = Artist.find(params[:show_id])
-      #show_id.artists << @artist
     end
   
     def show
